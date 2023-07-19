@@ -33,9 +33,18 @@ namespace SierraQuadrant
             
             var searchResults = searchBuilder.FindEx();
 
+            var initialPath = "";
+            var downloadPath = MFUtils.GetTransactionVariables(myObject.Vault
+                    , MFNamedValueType.MFAdminConfiguration
+                    , "downloadPath");
+
+            if (downloadPath.Contains("downloadPath"))
+                initialPath = downloadPath["downloadPath"].ToString();
+
+
             if (searchResults.Count > 0)
             {
-                var path = @"C:\PROIECTE\ARHIVA [SIERRA QUADRANT]\DOCUMENTE DESCARCATE\" + myObject.Title.Replace(':', '.') + @"\";
+                var path = initialPath + myObject.Title.Replace(':', '.') + @"\";
 
                 Directory.CreateDirectory(path);
 
