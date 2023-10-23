@@ -44,7 +44,7 @@ namespace SierraQuadrant
 
             if (searchResults.Count > 0)
             {
-                var path = initialPath + myObject.Title.Replace(':', '.') + @"\";
+                var path = initialPath + myObject.Title.Replace(':', '.').Replace('/', '.') + @"\";
 
                 Directory.CreateDirectory(path);
 
